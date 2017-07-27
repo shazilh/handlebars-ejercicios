@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HandleBars</title>
+</head>
+<body>
+	<div id="action"></div>
+	<!--script para poner estructura-->
+	 <script type="text/x-handlebars-template" id="index">
+		{{#each registros}}   <!--uso de helpers-->
+		 <h2 style="color:blue">{{{nombre}}},{{{apellidos}}},{{{edad}}}</h2>
+		 {{/each}}<!--solo muestra el dato si el archivo es false-->
+
+		<!--para que el handlebars identifique una etiqueta se ponen tres corchetes, si solo dejo dos corchetes las toma como texto-->
+	</script>
+
+	<script type="text/javascript"" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+
+	<script type="text/javascript">
+		var template= document.getElementById("index").innerHTML;
+		console.log(template);
+		var compilar = Handlebars.compile(template);
+
+		var persona = {
+			registros:[
+			{
+				nombre:"Shazil",
+				apellidos:"<em>Tovar Palestino</em>",
+				edad:"35",
+				mayor_edad:false
+		},
+			{
+				nombre:"Maru",
+				apellidos:"<em style='color:red'>Tovar Palestino</em>",
+				edad:"33",
+				mayor_edad:true
+		},
+			{
+				nombre:"Shazil",
+				apellidos:"<em>Tovar Palestino</em>",
+				edad:"22",
+				mayor_edad:false
+		}
+		]}
+
+		var compiladoHTML=compilar(persona);
+		document.getElementById("action").innerHTML +=compiladoHTML;
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HandleBars</title>
+</head>
+<body>
+	<div id="action"></div>
+	<!--script para poner estructura-->
+	<script type="text/x-handlebars-template" id="index">
+		<h2>Hola mi nombre es:{{{name}}}</h2>
+		<!--para que el handlebars identifique una etiqueta se ponen tres corchetes, si solo dejo dos corchetes las toma como texto-->
+	</script>
+
+	<script type="text/javascript"" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+
+	<script type="text/javascript">
+		var template= document.getElementById("index").innerHTML;
+		console.log(template);
+		var compilar = Handlebars.compile(template);
+		var compiladoHTML = compilar({name:"<em>Sofia</em>"});
+		document.getElementById("action").innerHTML +=compiladoHTML;
+	</script>
+</body>
+</html>

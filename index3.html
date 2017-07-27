@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HandleBars</title>
+</head>
+<body>
+	<div id="action"></div>
+	<!--script para poner estructura-->
+	<script type="text/x-handlebars-template" id="index">
+		<!--{persona.nombre}}}{{{persona.apellidos}}}{{{persona.edad}}}</h2>-->
+		{{#with persona}}   <!--uso de helpers-->
+		 <h2 style="color:yellow">{{{nombre}}},{{{apellidos}}},{{{edad}}}</h2>
+		 {{/with}}
+
+		<!--para que el handlebars identifique una etiqueta se ponen tres corchetes, si solo dejo dos corchetes las toma como texto-->
+	</script>
+
+	<script type="text/javascript"" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+
+	<script type="text/javascript">
+		var template= document.getElementById("index").innerHTML;
+		console.log(template);
+		var compilar = Handlebars.compile(template);
+
+		var data = {
+			persona:{
+				nombre:"Shazil",
+				apellidos:"Tovar Palestino",
+				edad:"35"
+			}
+		}
+		var compiladoHTML=compilar(data);
+		document.getElementById("action").innerHTML +=compiladoHTML;
+	</script>
+</body>
+</html>
